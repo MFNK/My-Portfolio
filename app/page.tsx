@@ -63,7 +63,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Hi, I'm{" "}
+          Hi, I&apos;m{" "}
           <span className="relative inline-block bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-[length:200%_auto] bg-clip-text text-transparent transition-all duration-500 hover:animate-shimmer">
             Mohammed Kiani
           </span>{" "}

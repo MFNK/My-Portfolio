@@ -33,7 +33,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          I'm{" "}
+          I&apos;m{" "}
           <span className="text-blue-600 dark:text-blue-400 font-semibold">
             Mohammed Kiani
           </span>
