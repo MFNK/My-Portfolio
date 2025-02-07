@@ -1,101 +1,142 @@
-import Image from "next/image";
+"use client"; // Required for animations in Next.js App Router
+
+import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const skills = [
+    "Python",
+    "HTML/CSS",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Django",
+    "PostgreSQL",
+    "MongoDB",
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  return (
+    <>
+      <style jsx>{`
+        @keyframes pulseGlow {
+          0% {
+            opacity: 0.2;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.4;
+            transform: scale(1.1);
+          }
+          100% {
+            opacity: 0.2;
+            transform: scale(1);
+          }
+        }
+        .animate-pulseGlow {
+          animation: pulseGlow 3s infinite ease-in-out;
+        }
+        @keyframes shimmer {
+          0% {
+            background-position: -200% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
+        }
+        .hover\\:animate-shimmer:hover {
+          animation: shimmer 1.5s infinite linear;
+        }
+      `}</style>
+
+      <div className="relative flex flex-col items-center justify-center min-h-screen text-center px-6">
+        {/* Background Gradient Effect */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-200 to-gray-100 dark:from-gray-900 dark:to-gray-800 opacity-90 -z-10"></div>
+
+        {/* Animated Glow Effect */}
+        <div className="absolute w-72 h-72 bg-blue-300 dark:bg-blue-500 opacity-20 blur-3xl top-1/4 left-1/4 -z-10 animate-pulseGlow"></div>
+        <div className="absolute w-60 h-60 bg-purple-300 dark:bg-purple-500 opacity-20 blur-3xl bottom-1/4 right-1/4 -z-10 animate-pulseGlow"></div>
+
+        {/* Animated Title */}
+        <motion.h1
+          className="text-5xl font-extrabold text-gray-900 dark:text-white mb-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Hi, I'm{" "}
+          <span className="relative inline-block bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-[length:200%_auto] bg-clip-text text-transparent transition-all duration-500 hover:animate-shimmer">
+            Mohammed Kiani
+          </span>{" "}
+          👋
+        </motion.h1>
+
+        {/* Animated Subtitle */}
+        <motion.p
+          className="text-lg text-gray-700 dark:text-gray-400 max-w-2xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          A passionate{" "}
+          <span className="text-blue-500 dark:text-blue-300 font-semibold">
+            <Typewriter
+              words={[
+                "Full-Stack Developer",
+                "Software Engineer",
+                "Tech Enthusiast",
+              ]}
+              loop={false}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={40}
+              delaySpeed={2000}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </span>{" "}
+          creating modern, scalable web applications. I love turning ideas into
+          reality through{" "}
+          <span className="text-blue-500 dark:text-blue-300 font-semibold">
+            clean code
+          </span>{" "}
+          and innovative solutions.
+        </motion.p>
+
+        {/* Skills Section */}
+        <motion.div
+          className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-lg"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              className="bg-gray-300 dark:bg-gray-800 text-gray-900 dark:text-white py-2 px-4 rounded-lg shadow-md transition-all duration-200 cursor-default"
+              whileHover={{ scale: 1.1 }}
+            >
+              {skill}
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Call-To-Action Button */}
+        <motion.a
+          href="/projects"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <motion.button
+            className="mt-6 px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-transform transform"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            animate={{ x: [0, 2, -2, 2, 0], y: [0, 1, -1, 1, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            View My Projects 🚀
+          </motion.button>
+        </motion.a>
+      </div>
+    </>
   );
 }
