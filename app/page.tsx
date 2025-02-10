@@ -90,7 +90,7 @@ export default function Home() {
               cursorStyle="_"
               typeSpeed={70}
               deleteSpeed={40}
-              delaySpeed={2000}
+              delaySpeed={4000}
             />
           </span>{" "}
           creating modern, scalable web applications. I love turning ideas into

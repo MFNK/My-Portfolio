@@ -6,15 +6,16 @@ import Image from "next/image";
 export default function Projects() {
   const projects = [
     {
-      name: "Project 1",
-      description: "A web app for modern development.",
-      image: "/project1.jpg",
-      link: "https://github.com/yourproject",
+      name: "AI Scripts Generator",
+      description:
+        "A web app for generating a YouTube video into a Shorts video script.",
+      image: "/ai_scripts.png",
+      link: "https://github.com/MFNK/ai-scripts",
     },
     {
-      name: "Project 2",
-      description: "A beautiful UI/UX project.",
-      image: "/project2.jpg",
+      name: "Journal App (In Progress)",
+      description: "A beautiful UI/UX project for journalling.",
+      image: "/journal.png",
       link: "https://github.com/yourproject2",
     },
   ];
@@ -39,7 +40,7 @@ export default function Projects() {
 
         {projects.map((project, index) => (
           <motion.div
-            key={index}
+            key={project.name}
             className="bg-gray-200 dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition-transform"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -52,6 +53,7 @@ export default function Projects() {
               width={500}
               height={300}
               className="rounded-md w-full h-48 object-cover mb-4"
+              unoptimized={true}
             />
 
             {/* Project Title */}
